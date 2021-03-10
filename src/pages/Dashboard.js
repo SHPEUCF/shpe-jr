@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Cards, Search } from '../components';
 import { Admin } from './Admin';
+import { About } from './About';
 import Logo from '../assets/shpe/shpeucflogo_bb.svg';
 import Odi from '../assets/shpe/cecs-odi.png';
 import Services from '../assets/shpe/career-services.png';
@@ -63,9 +64,9 @@ export const Dashboard = () => {
 					<div onClick = { () => setActiveTab('dayTwo') }>
 						<li className = { activeTab === 'dayTwo' ? 'active' : '' }> Day 2 </li>
 					</div>
-					{ /* <div onClick = { () => { setActiveTab('admin') } }>
-						<li className = { activeTab === 'admin' ? 'active' : '' }> Admin </li>
-						</div> */ }
+					<div onClick = { () => { setActiveTab('about') } }>
+						<li className = { activeTab === 'about' ? 'active' : '' }> About </li>
+					</div> 
 				</ul>
 				<div id = 'fadeshow' className = 'meta'>
 					 Brought to you by <br></br>
@@ -81,14 +82,14 @@ export const Dashboard = () => {
 			<div className = 'App'>
 				{ Nav() }
 				<div className = 'main'>
-					{ activeTab !== 'admin'
+					{ activeTab !== 'about'
 						? <div className = 'upperNav'>
 							<Search input = { handleSearch } filters = { handleFilter } />
 						</div> : null
 					}
 					<div className = 'mainContent'>
-						{ activeTab === 'admin'
-							? <Admin />
+						{ activeTab === 'about'
+							? <About />
 							: <Cards data = { activeTab } search = { searchInput } tags = { filterInput } />
 						}
 					</div>
