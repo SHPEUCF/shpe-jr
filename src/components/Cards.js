@@ -15,6 +15,7 @@ import {
 	DialogTitle,
 	Typography
 } from '@material-ui/core/';
+import { Schedule } from '@material-ui/icons';
 
 export const Cards = ({ data, search, tags }) => {
 	const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ export const Cards = ({ data, search, tags }) => {
 
 	const renderDialog = () => {
 		if (selectedCompany) // eslint-disable-next-line no-var
-			var { tagline, img, description, careersLink, zoomLink } = companyData[selectedCompany];
+			var { tagline, img, description, careersLink, zoomLink, schedule } = companyData[selectedCompany];
 
 		return (
 			<Dialog open = { show } onClose = { () => setShow(false) }>
@@ -33,6 +34,9 @@ export const Cards = ({ data, search, tags }) => {
 					<DialogContent>
 						<img id = 'img' src = { img } alt = { selectedCompany.companyName } />
 					</DialogContent>
+					<DialogContentText style={{color: 'black'}}>
+						{ schedule }
+					</DialogContentText>
 					<DialogContentText>
 						{ description }
 					</DialogContentText>
