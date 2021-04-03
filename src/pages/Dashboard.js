@@ -5,6 +5,7 @@ import { About } from './About';
 import Logo from '../assets/shpe/shpeucflogo_bb.svg';
 import Odi from '../assets/shpe/cecs-odi.png';
 import Services from '../assets/shpe/career-services.png';
+import ShpeJr from '../assets/shpe/openingDia.png';
 import '../styles/Dashboard.scss';
 import {
 	Button,
@@ -29,19 +30,23 @@ export const Dashboard = () => {
 				<Dialog
 					open = { video }
 					onClose = { () => setVideo(false) }
+					fullWidth={true}
+					maxWidth={'md'}
 				>
 					<DialogTitle>
-						A Message from Our President
+						A Message from Our SHPE Jr. Director
 					</DialogTitle>
 					<DialogContent>
 						<DialogContent>
-							<iframe className = 'video' src = 'https://www.youtube.com/embed/f0aFnUr8vxY' frameborder = '0' allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+							<img style={{height: '35vh', width: '65vh'}} src={ShpeJr}></img>
+							<p>I’m so thrilled to welcome you to the first ever virtual SHPE Jr. Conference in the history of our chapter for the Society of Hispanic Professional Engineers (SHPE) at the University of Central Florida! The entire SHPE UCF E-Board and Board welcomes each and every one of you and wish you the best of experiences from this event.</p>
+							<p>If you are currently are a high school freshman, sophomore, junior or senior, I ask you to please take as much advantage of this event. This event was specially made with you in mind to earn a major advantage over other students before even stepping foot on campus as a college freshman. These wonderful sponsors are here to give students like you an opportunity inpersonally getting to know professionals from the industry and providinginsight on what job opportunities are available in the industry as you prepare for your next step after high school. If by any chance you are planning to come to UCF after high school, don’t forget to stop by the UCF Office of Financial Aid Assistance booth to get any questions or concerns you mayhave related to financial aid resolved. We hope you make the most of this event in any of the booths you plan to join!</p>
+							<p>To all of our participating sponsors:</p>
+							<p>Thank you for taking the time out of your Saturday to inspire these high school students! This event would not have been possible without your endless support and we can’t wait to have you be a part of our future events!</p>
+							<p>P.S. A special thanks to the SHPE UCF Tech Committee for making this virtual conference possible!</p>
 						</DialogContent>
 					</DialogContent>
 					<DialogActions>
-						<Button size = 'small' color = 'primary' onClick = { () => { window.open('https://docs.google.com/forms/d/e/1FAIpQLSdhb0AG6LZeg4Kh69_XBtsbJfanxAnsAj6CMkKzKlNN8aPv9A/viewform', '_blank') } }>
-							<b>Student Registration</b>
-						</Button>
 						<Button size = 'small' color = 'primary' onClick = { () => setVideo(false) }>
 							Close
 						</Button>
@@ -54,15 +59,10 @@ export const Dashboard = () => {
 	const Nav = () => {
 		return (
 			<div className = 'navBar'>
-				<div className = 'logoContainer'>
-					<img className = 'logo' src = { Logo } alt = 'SHPE Industy BBQ'></img>
-				</div>
+				
 				<ul>
 					<div onClick = { () => setActiveTab('dayOne') }>
-						<li className = { activeTab === 'dayOne' ? 'active' : '' }> Day 1 </li>
-					</div>
-					<div onClick = { () => setActiveTab('dayTwo') }>
-						<li className = { activeTab === 'dayTwo' ? 'active' : '' }> Day 2 </li>
+						<li className = { activeTab === 'dayOne' ? 'active' : '' }> Home </li>
 					</div>
 					<div onClick = { () => { setActiveTab('about') } }>
 						<li className = { activeTab === 'about' ? 'active' : '' }> About </li>
@@ -77,16 +77,11 @@ export const Dashboard = () => {
 	};
 
 	return (
-		<div className = 'outerWrap'>
+		<div>
 			 { renderVideo() }
 			<div className = 'App'>
 				{ Nav() }
 				<div className = 'main'>
-					{ activeTab !== 'about'
-						? <div className = 'upperNav'>
-							<Search input = { handleSearch } filters = { handleFilter } />
-						</div> : null
-					}
 					<div className = 'mainContent'>
 						{ activeTab === 'about'
 							? <About />
@@ -94,11 +89,6 @@ export const Dashboard = () => {
 						}
 					</div>
 				</div>
-			</div>
-			<div className = 'footer'>
-				<h3>Special Thanks to:</h3>
-				<img className = 'services' src = { Services } alt = 'career services logo'></img>
-				<img className = 'odi' src = { Odi } alt = 'ODI Logo'></img>
 			</div>
 		</div>
 	);

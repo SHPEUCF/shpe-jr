@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { dayOneData, dayTwoData, companyData } from '../data';
+import { dayOneData, companyData } from '../data';
 import '../styles/Cards.scss';
 import {
 	Grid,
@@ -47,7 +47,7 @@ export const Cards = ({ data, search, tags }) => {
 	};
 
 	const renderDay = () => {
-		let day = (data === 'dayOne') ? dayOneData : dayTwoData;
+		let day = dayOneData;
 		let filterCompanies = day.filter(({ companyName }) => {
 			const filters = ['major', 'industry', 'position'];
 
